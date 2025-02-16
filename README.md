@@ -1,4 +1,5 @@
 # VoidPack
+Gnome 48.beta
 To use this repository, add the line to `/etc/xbps.d/VoidPack.conf`
 
 ```shell
