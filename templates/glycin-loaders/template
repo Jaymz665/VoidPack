@@ -1,0 +1,29 @@
+# Template file for 'glycin-loaders'
+pkgname=glycin-loaders
+version=1.2.beta.1
+revision=1
+build_style=meson
+build_helper=rust
+configure_args="-Dtest_skip_install=true -Dlibglycin=false"
+hostmakedepends="cargo clang17 gettext pkg-config"
+makedepends="gtk4-devel libheif-devel libjxl-devel libseccomp-devel rust-std
+ librsvg-devel"
+short_desc="Sandboxed and extendable image decoding"
+maintainer="chrysos349 <chrysostom349@gmail.com>"
+license="MPL-2.0"
+homepage="https://gitlab.gnome.org/sophie-h/glycin"
+changelog="https://gitlab.gnome.org/sophie-h/glycin/-/raw/main/NEWS"
+#distfiles="${GNOME_SITE}/glycin/${version%.*}/glycin-${version}.tar.xz"
+distfiles="https://download.gnome.org/sources/glycin/1.2/glycin-1.2.beta.1.tar.xz"
+checksum=f6952ed2854641bf521b430c088c953edf53d39fcfb9e0a30eb6872c7482ec26
+make_check=no # needs to be installed to run tests
+
+post_patch() {
+	if [ "$CROSS_BUILD" ]; then
+		vsed -i loaders/meson.build \
+			-e "s%rust_target /%'${RUST_TARGET}' / &%"
+	fi
+	# loaders/meson.build tries to call git to get hash for debug builds.
+	# Disable as it is useless for tarball builds.
+	ln -sf /bin/false ${XBPS_WRAPPERDIR}/git
+}

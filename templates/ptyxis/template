@@ -1,0 +1,25 @@
+# Template file for 'ptyxis'
+pkgname=ptyxis
+version=48.beta
+revision=1
+build_style=meson
+hostmakedepends="pkg-config desktop-file-utils gettext
+ gobject-introspection glib-devel gtk-update-icon-cache"
+makedepends="libadwaita-devel libportal-gtk4-devel vte3-gtk4-devel libgtop-devel
+ gsettings-desktop-schemas-devel pcre2-devel"
+depends="gsettings-desktop-schemas"
+short_desc="Simple user-friendly terminal emulator for the GNOME desktop"
+maintainer="oreo639 <oreo6391@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://gitlab.gnome.org/GNOME/console"
+#changelog="https://gitlab.gnome.org/GNOME/console/-/raw/main/NEWS"
+changelog="https://gitlab.gnome.org/GNOME/console/-/raw/gnome-47/NEWS"
+#distfiles="${GNOME_SITE}/ptyxis/${version%.*}/ptyxis-${version}.tar.xz"
+distfiles="https://download.gnome.org/sources/ptyxis/48/ptyxis-48.beta.tar.xz"
+checksum=05269440b1081b2ca6728f4739ddff3d72a391fc1107e61cfd070f80d9fc8c5c
+
+nautilus-ptyxis-extension_package() {
+	depends="${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - transitional package"
+	build_style=meta
+}
