@@ -1,0 +1,25 @@
+# Template file for 'loupe'
+pkgname=loupe
+version=48.beta
+revision=1
+build_style=meson
+build_helper=rust
+hostmakedepends="cargo desktop-file-utils gettext gtk4-update-icon-cache
+ itstool pkg-config"
+makedepends="lcms2-devel libadwaita-devel libgweather-devel libseccomp-devel
+ rust-std"
+depends="glycin-loaders"
+short_desc="Simple image viewer for GNOME"
+maintainer="chrysos349 <chrysostom349@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://gitlab.gnome.org/GNOME/loupe"
+changelog="https://gitlab.gnome.org/GNOME/loupe/-/raw/main/NEWS"
+distfiles="${GNOME_SITE}/loupe/${version%.*}/loupe-${version}.tar.xz"
+checksum=45c4f2ae3069fcc609db3be1631fa0b15ccac9758e4584cb2c406710ddc2dece
+
+post_patch() {
+	if [ "$CROSS_BUILD" ]; then
+		vsed -i src/meson.build \
+			-e "s%rust_target /%'${RUST_TARGET}' / &%"
+	fi
+}

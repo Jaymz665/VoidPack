@@ -1,0 +1,15 @@
+# Template file for 'qadwaitadecorations-qt5'
+pkgname=qadwaitadecorations-qt5
+version=0.1.6
+revision=1
+build_style=cmake
+configure_args="-DUSE_QT6=false"
+hostmakedepends="pkg-config"
+makedepends="qt5-devel qt5-svg-devel qt5-wayland-devel qt6-base-private-devel"
+# depends=""
+short_desc="Qt decoration plugin implementing Adwaita-like client-side decorations"
+maintainer="fanyx <fanyx@posteo.net>"
+license="LGPL-2.1-or-later"
+homepage="https://github.com/FedoraQt/QAdwaitaDecorations"
+distfiles="https://github.com/FedoraQt/QAdwaitaDecorations/archive/${version}.tar.gz"
+checksum=dc413ddd27ea8f5bbbfd9640f5f2c25827c035d280dc271dd8dc18c88de905e1

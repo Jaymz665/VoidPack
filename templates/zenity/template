@@ -1,0 +1,21 @@
+# Template file for 'zenity'
+pkgname=zenity
+version=4.1.90
+revision=1
+build_style=meson
+configure_args="-Dwebkitgtk=$(vopt_if webkit true false)"
+hostmakedepends="gettext glib-devel gtk-update-icon-cache help2man itstool
+ pkg-config"
+makedepends="$(vopt_if webkit libwebkitgtk60-devel) libadwaita-devel"
+short_desc="Display GNOME dialogs from the command line"
+maintainer="Enno Boland <gottox@voidlinux.org>"
+license="LGPL-2.0-or-later"
+homepage="https://help.gnome.org/users/zenity/"
+changelog="https://gitlab.gnome.org/GNOME/zenity/-/raw/master/NEWS"
+distfiles="${GNOME_SITE}/zenity/${version%.*}/zenity-${version}.tar.xz"
+checksum=bf3679c6205ff48dcebd1e1dff3a3a4a6a0b3a53e1cbc3b098a9ec0b62bd7236
+
+build_options="webkit"
+build_options_default="webkit"
+
+desc_option_webkit="Enable support for webkit"

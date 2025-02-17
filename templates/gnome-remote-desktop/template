@@ -1,0 +1,18 @@
+# Template file for 'gnome-remote-desktop'
+pkgname=gnome-remote-desktop
+version=47.2
+revision=1
+build_style=meson
+configure_args="-Drdp=true -Dvnc=true -Dsystemd=false
+ -Dsystemd_user_unit_dir=/usr/lib/systemd/user -Dtests=false"
+hostmakedepends="pkg-config gettext glib-devel asciidoc"
+makedepends="glib-devel pipewire-devel libsecret-devel libnotify-devel
+ freerdp3-devel fuse3-devel libvncserver-devel libgudev-devel nv-codec-headers
+ tpm2-tss-devel fdk-aac-devel libei-devel opus-devel polkit-devel"
+short_desc="GNOME remote desktop server"
+maintainer="Orphaned <orphan@voidlinux.org>"
+license="GPL-2.0-or-later"
+homepage="https://wiki.gnome.org/Projects/Mutter/RemoteDesktop"
+distfiles="${GNOME_SITE}/gnome-remote-desktop/${version%%.*}/gnome-remote-desktop-${version}.tar.xz"
+checksum=9351dd8c39ece7050c967cbdcebe1662bc26b8fda924f8a80a9b2a312d07f471
+make_check=no # xvfb failed to start
