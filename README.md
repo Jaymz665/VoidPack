@@ -10,6 +10,7 @@ repository=https://raw.githubusercontent.com/Jaymz665/VoidPack/main/repository-x
 # Warning!
 These packages are built manually and tested only on my personal computer. I am not responsible if something breaks or goes wrong with you.
 
+There is currently a problem with the gnome console, and ptyxis has been added to the repository.
 
 #
 Чтобы использовать этот репозиторий, добавьте в файл `/etc/xbps.d/VoidPack.conf`
@@ -21,3 +22,5 @@ repository=https://raw.githubusercontent.com/Jaymz665/VoidPack/main/repository-x
 
 # Предупреждение!
 Эти пакеты собраны вручную и протестированы только на моём личном компьютере. Я не несу ответственности, если у вас что-то сломается или пойдёт не так
+
+В данный момент наблюдается проблема с gnome-console,  в репозиторий добавлен ptyxis
