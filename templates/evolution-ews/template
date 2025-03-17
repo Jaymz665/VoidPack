@@ -1,7 +1,7 @@
 # Template file for 'evolution-ews'
 pkgname=evolution-ews
-version=3.54.2
-revision=1
+version=3.56.0
+revision=0
 build_style=cmake
 configure_args="-DLIBEXEC_INSTALL_DIR=/usr/lib/evolution"
 hostmakedepends="cmake glib-devel intltool libmspack pkg-config"
@@ -13,4 +13,4 @@ license="LGPL-2.1-or-later"
 homepage="https://wiki.gnome.org/Apps/Evolution"
 changelog="https://gitlab.gnome.org/GNOME/evolution-ews/-/raw/gnome-47/NEWS"
 distfiles="${GNOME_SITE}/evolution-ews/${version%.*}/evolution-ews-${version}.tar.xz"
-checksum=efb519da29e8217e7cb7774d43d04626248c3be58a1946c8a63c320e5d883cd4
+checksum=4dfd5790158d8e2f8744dc8ab0ea4e6d7890e8c7cfaabc5f0150ca58a4c7be9c

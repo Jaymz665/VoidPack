@@ -1,2 +1,2 @@
 site="${MOZILLA_SITE}/firefox/releases/"
-pattern="[\d.]+(?=esr)"
+pattern="releases/\K${version%%.*}.*(?=esr/\")"

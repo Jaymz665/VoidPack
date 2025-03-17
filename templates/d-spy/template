@@ -1,7 +1,7 @@
 # Template file for 'd-spy'
 pkgname=d-spy
-version=48.beta
-revision=1
+version=48.rc
+revision=0
 build_style=meson
 hostmakedepends="pkg-config gettext glib-devel desktop-file-utils
  gtk-update-icon-cache"
@@ -12,7 +12,7 @@ license="GPL-3.0-or-later"
 homepage="https://gitlab.gnome.org/GNOME/d-spy"
 changelog="https://gitlab.gnome.org/GNOME/d-spy/-/raw/main/NEWS"
 distfiles="${GNOME_SITE}/d-spy/${version%.*}/d-spy-${version}.tar.xz"
-checksum=f89d795d0686d82da1dceb236148f7ce54d5ca78f0b98e0f1336b263a5afcea1
+checksum=7de5280a83fc7d2f7d0c924b336fc0532c42b8c4c86da7d9ea7fc6e78c4eb02d
 
 d-spy-devel_package() {
 	depends="gtk4-devel libadwaita-devel ${sourcepkg}>=${version}_${revision}"

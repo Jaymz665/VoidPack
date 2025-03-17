@@ -1,7 +1,7 @@
 # Template file for 'gnome-tour'
 pkgname=gnome-tour
 version=47.0
-revision=1
+revision=0
 build_style=meson
 build_helper=rust
 hostmakedepends="pkg-config cargo glib-devel gettext
@@ -11,7 +11,7 @@ short_desc="GNOME Tour & Greeter"
 maintainer="oreo639 <oreo6391@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://gitlab.gnome.org/GNOME/gnome-tour/"
-changelog="https://gitlab.gnome.org/GNOME/gnome-tour/-/raw/master/NEWS"
+changelog="https://gitlab.gnome.org/GNOME/gnome-tour/-/raw/main/NEWS"
 distfiles="${GNOME_SITE}/gnome-tour/${version%.*}/gnome-tour-${version}.tar.xz"
 checksum=72faaf89e006c89324a7e1572046916961b38aeba38f6d6d4cc41e3d3d466944
 

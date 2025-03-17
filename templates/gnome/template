@@ -1,7 +1,7 @@
 # Template file for 'gnome'
 pkgname=gnome
-version=47.0
-revision=1
+version=3.30.2
+revision=0
 build_style=meta
 short_desc="GNOME meta-package for Void Linux"
 maintainer="Orphaned <orphan@voidlinux.org>"
@@ -9,16 +9,16 @@ license="GPL-2.0-only, LGPL-2.0-only"
 homepage="https://www.gnome.org"
 
 depends="
+ gnome-core>=${version}
  baobab>=${version}
- evince>=46.3.1
- file-roller>=44.3
+ evince>=46.3
+ file-roller>=44.5
  gnome-calculator>=${version}
  gnome-calendar>=${version}
  gnome-characters>=${version}
  gnome-clocks>=${version}
  gnome-console>=${version}
  gnome-contacts>=${version}
- gnome-core>=${version}
  gnome-disk-utility>=46.1
  gnome-font-viewer>=${version}
  gnome-maps>=${version}
@@ -29,33 +29,31 @@ depends="
  gnome-tweaks>=46.1
  gnome-weather>=${version}
  gsound>=1.0.3
- gspell>=1.14.0
- iio-sensor-proxy>=3.5
+ gspell>=1.12.2
+ iio-sensor-proxy>=3.4
  loupe>=${version}
  orca>=${version}
  phodav>=3.0
- power-profiles-daemon>=0.23
+ power-profiles-daemon>=0.13
  simple-scan>=46.0
  snapshot>=${version}
- totem>=43
- "
+ totem>=43"
 
 _apps_depends="
  Endeavour>=43
  bijiben>=40.1
  dconf-editor>=45.0.1
  devhelp>=43
- eog>=${version}
  epiphany>=${version}
- evolution>=3.54.0
+ evolution>=3.52.0
  ghex>=46.0
  gitg>=44
- gnome-boxes>=46.1
+ gnome-boxes>=${version}
  gnome-builder>=${version}
  gnome-calculator>=${version}
  gnome-calendar>=${version}
  gnome-characters>=${version}
- gnome-clocks>=46.0
+ gnome-clocks>=${version}
  gnome-connections>=${version}
  gnome-console>=${version}
  gnome-dictionary>=40.0
@@ -72,14 +70,13 @@ _apps_depends="
  gnome-tour>=${version}
  gnote>=${version}
  polari>=46.0
- rygel>=0.42.6
+ rygel>=0.42.5
  simple-scan>=46.0
  totem>=43.0
- vino>=3.22.0
- "
+ vino>=3.22.0"
 
 _games_collection_depends="
- aisleriot>=3.22.33
+ aisleriot>=3.22.31
  five-or-more>=3.32.3
  four-in-a-row>=3.38.1
  gnome-2048>=3.38.2
@@ -96,8 +93,7 @@ _games_collection_depends="
  lightsoff>=46.0
  quadrapassel>=40.2
  swell-foop>=46.0
- tali>=40.9
- "
+ tali>=40.9"
 
 gnome-apps_package() {
 	depends="$_apps_depends"

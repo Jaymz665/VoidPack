@@ -1,8 +1,8 @@
 # Template file for 'glib'
 # keep in sync with glib-bootstrap
 pkgname=glib
-version=2.83.3
-revision=1
+version=2.83.4
+revision=0
 build_style=meson
 build_helper="qemu"
 # static version is necessary for qemu-user
@@ -20,7 +20,7 @@ homepage="https://wiki.gnome.org/Projects/GLib"
 changelog="https://gitlab.gnome.org/GNOME/glib/raw/glib-2-82/NEWS"
 #changelog="https://gitlab.gnome.org/GNOME/glib/raw/main/NEWS"
 distfiles="${GNOME_SITE}/glib/${version%.*}/glib-${version}.tar.xz"
-checksum=d0c65318bb2e3fa594277cf98a71cffaf5f666c078db39dcec121757b2ba328d
+checksum=4edc4dc184f46d1220694b7775c5d7c62265c83b0e9632d844da127c181fc391
 conflicts="gir-freedesktop<1.80.0_1" # glib typelibs are now in glib
 make_check_pre="dbus-run-session"
 
@@ -81,7 +81,7 @@ libglib-devel_package() {
 glib-devel_package() {
 	depends="python3-packaging libglib-devel>=${version}_${revision}"
 	short_desc+=" - development files"
-	python_version=3
+	python_version=2.84.0
 	pycompile_dirs="usr/share/glib-2.0/codegen usr/share/glib-2.0/gdb"
 	pkg_install() {
 		vmove usr/bin/glib-compile-resources

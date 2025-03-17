@@ -1,7 +1,7 @@
 # Template file for 'gnome-music'
 pkgname=gnome-music
 version=48.beta
-revision=1
+revision=0
 build_helper="gir"
 build_style=meson
 hostmakedepends="gettext glib-devel itstool pkg-config
@@ -16,7 +16,8 @@ short_desc="GNOME music playing application"
 maintainer="Enno Boland <gottox@voidlinux.org>"
 license="GPL-2.0-or-later"
 homepage="https://wiki.gnome.org/Apps/Music"
-changelog="https://gitlab.gnome.org/GNOME/gnome-music/-/raw/master/NEWS"
+#changelog="https://gitlab.gnome.org/GNOME/gnome-music/-/raw/master/NEWS"
+changelog="https://gitlab.gnome.org/GNOME/gnome-music/-/raw/gnome-47/NEWS"
 distfiles="${GNOME_SITE}/gnome-music/${version%.*}/gnome-music-${version}.tar.xz"
-checksum=666f175f560a1ad9cbab61ea0f30393ca2fed2946ba46e5c00eaea117dbc70d0
+checksum=a88c34d611b0af4ce0d8b140bd33df868c294d2318310c5364937d43082624ec
 lib32disabled=yes

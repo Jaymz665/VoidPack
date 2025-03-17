@@ -1,7 +1,7 @@
 # Template file for 'gnome-calendar'
 pkgname=gnome-calendar
-version=48.beta
-revision=1
+version=48.rc
+revision=0
 build_style=meson
 hostmakedepends="gettext glib-devel pkg-config gtk4-update-icon-cache
  $(vopt_if gir 'gobject-introspection')"
@@ -12,10 +12,10 @@ short_desc="Calendar application designed to perfectly fit the GNOME desktop"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="GPL-2.0-or-later"
 homepage="https://wiki.gnome.org/Apps/Calendar"
-#changelog="https://gitlab.gnome.org/GNOME/gnome-calendar/-/raw/gnome-46/NEWS"
-changelog="https://gitlab.gnome.org/GNOME/gnome-calendar/-/raw/main/NEWS"
+changelog="https://gitlab.gnome.org/GNOME/gnome-calendar/-/raw/gnome-47/NEWS"
+#changelog="https://gitlab.gnome.org/GNOME/gnome-calendar/-/raw/main/NEWS"
 distfiles="${GNOME_SITE}/gnome-calendar/${version%.*}/gnome-calendar-${version}.tar.xz"
-checksum=3b03313f1c4d12dc821e07e209d1596d53eafa255d492d2ce5abf92ed1b51e76
+checksum=902a389159bc33a48a044db9d32e242568f6be2806bcc881322c45f7ed3603ee
 
 build_options="gir"
 build_options_default="gir"

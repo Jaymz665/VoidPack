@@ -1,7 +1,7 @@
 # Template file for 'rygel'
 pkgname=rygel
-version=0.44.1
-revision=1
+version=0.44.2
+revision=0
 build_style=meson
 build_helper="gir"
 configure_args="-Dexamples=false -Dtests=false"
@@ -16,12 +16,12 @@ license="LGPL-2.1-or-later"
 homepage="https://wiki.gnome.org/Projects/Rygel"
 changelog="https://gitlab.gnome.org/GNOME/rygel/-/raw/master/NEWS"
 distfiles="${GNOME_SITE}/rygel/${version%.*}/rygel-${version}.tar.xz"
-checksum=7b2c631b842408da27a54242f8082aba49bd1ca02041e79e1eefba0c7009a87b
+checksum=796eee494cdf60dc2bf82b00b8f99a14ba1c7cf40d2944817ff0c1aa6073d5a0
 
 conf_files="/etc/rygel.conf"
 
 rygel-devel_package() {
-	depends="libgee-devel gupnp-av-devel libuuid-devel
+	depends="libgee-devel gupnp-devel gupnp-av-devel libuuid-devel
 	 libglib-devel librygel>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {

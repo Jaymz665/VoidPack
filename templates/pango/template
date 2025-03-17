@@ -1,7 +1,7 @@
 # Template file for 'pango'
 pkgname=pango
 version=1.56.1
-revision=01
+revision=0
 build_style=meson
 build_helper=gir
 configure_args="-Dbuild-examples=false $(vopt_feature gir introspection)"
@@ -14,7 +14,7 @@ license="LGPL-2.1-or-later"
 homepage="https://www.pango.org/"
 changelog="https://gitlab.gnome.org/GNOME/pango/-/raw/main/NEWS"
 distfiles="${GNOME_SITE}/pango/${version%.*}/pango-${version}.tar.xz"
-checksum=426be66460c98b8378573e7f6b0b2ab450f6bb6d2ec7cecc33ae81178f246480
+checksum=
 
 # Package build options
 build_options="gir"
@@ -42,9 +42,9 @@ pango-view_package() {
 	pkg_install() {
 		vmove usr/bin/pango-view
 		# XXX help2man needs to run host binary
-		#if [ -z "$CROSS_BUILD" ]; then
-		#	vmove usr/share/man/man1/pango-view.1
-		#fi
+		if [ -z "$CROSS_BUILD" ]; then
+			vmove usr/share/man/man1/pango-view.1
+		fi
 	}
 }
 pango-devel_package() {

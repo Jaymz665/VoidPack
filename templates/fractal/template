@@ -13,7 +13,7 @@ short_desc="Matrix Messaging Client for GNOME"
 maintainer="Cameron Nemo <cam@nohom.org>"
 license="GPL-3.0-or-later"
 homepage="https://wiki.gnome.org/Apps/Fractal"
-distfiles="https://gitlab.gnome.org/GNOME/fractal/-/archive/${version}/fractal-${version}.tar.gz"
+distfiles="https://gitlab.gnome.org/World/fractal/-/archive/${version}/fractal-${version}.tar.gz"
 checksum=7872f050bf1c5904b93ba518b542bcb6fc80c557966645101103060098ddf6d0
 
 post_patch() {

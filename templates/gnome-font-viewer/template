@@ -1,7 +1,7 @@
 # Template file for 'gnome-font-viewer'
 pkgname=gnome-font-viewer
-version=47.0
-revision=1
+version=48.0
+revision=0
 build_style=meson
 hostmakedepends="pkg-config glib-devel gettext"
 makedepends="fontconfig-devel freetype-devel glib-devel gtk4-devel
@@ -11,7 +11,7 @@ short_desc="Font viewer for GNOME"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="GPL-2.0-or-later"
 homepage="https://gitlab.gnome.org/GNOME/gnome-font-viewer"
-#changelog="https://gitlab.gnome.org/GNOME/gnome-font-viewer/-/raw/main/NEWS"
-changelog="https://gitlab.gnome.org/GNOME/gnome-font-viewer/-/raw/gnome-46/NEWS"
+changelog="https://gitlab.gnome.org/GNOME/gnome-font-viewer/-/raw/main/NEWS"
+#changelog="https://gitlab.gnome.org/GNOME/gnome-font-viewer/-/raw/gnome-47/NEWS"
 distfiles="${GNOME_SITE}/gnome-font-viewer/${version%.*}/gnome-font-viewer-${version}.tar.xz"
-checksum=b8e5a042e0b241b0c7cae43f74da0d5f88e6423017a91feb86e7617edb4080ed
+checksum=732624231b624ff5c7ac03a8ce71be12393daa53551d11550b20d7b0a3a872a7

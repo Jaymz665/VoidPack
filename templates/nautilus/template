@@ -1,12 +1,12 @@
 # Template file for 'nautilus'
 pkgname=nautilus
-version=48.beta
-revision=1
+version=48.0
+revision=0
 build_style=meson
 build_helper="gir"
 configure_args="-Dtests=headless -Dintrospection=$(vopt_if gir true false)"
 hostmakedepends="gettext glib-devel libxslt pkg-config desktop-file-utils
- localsearch gtk-update-icon-cache"
+ localsearch gtk-update-icon-cache wayland-devel"
 makedepends="exempi-devel gnome-autoar-devel gnome-desktop-devel gtk4-devel
  libexif-devel libgexiv2-devel libglib-devel libnotify-devel libseccomp-devel
  libxml2-devel gst-plugins-base1-devel harfbuzz-devel
@@ -21,7 +21,7 @@ homepage="https://wiki.gnome.org/Nautilus"
 #changelog="https://gitlab.gnome.org/GNOME/nautilus/-/raw/main/NEWS"
 changelog="https://gitlab.gnome.org/GNOME/nautilus/-/raw/gnome-47/NEWS"
 distfiles="${GNOME_SITE}/nautilus/${version%%.*}/nautilus-${version}.tar.xz"
-checksum=4da8777f71e64bcae9c74af2fff31525c97e601f052586a98d5b7877388a78a6
+checksum=f9e6a4cbe1d5bb7ad59ac44f0d439edd4b0507bf07d3d90a2e7e7e6d3f416d57
 # tests timeout:
 # 11/11 test-nautilus-search-engine-tracker            TIMEOUT        480.00s
 make_check=ci-skip

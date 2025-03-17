@@ -1,7 +1,7 @@
 # Template file for 'zenity'
 pkgname=zenity
 version=4.1.90
-revision=1
+revision=0
 build_style=meson
 configure_args="-Dwebkitgtk=$(vopt_if webkit true false)"
 hostmakedepends="gettext glib-devel gtk-update-icon-cache help2man itstool

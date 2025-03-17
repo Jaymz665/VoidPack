@@ -1,7 +1,7 @@
 # Template file for 'gnome-desktop'
 pkgname=gnome-desktop
 version=44.1
-revision=1
+revision=0
 build_style=meson
 build_helper="gir"
 configure_args="-Dudev=enabled -Dsystemd=disabled

@@ -1,7 +1,7 @@
 # Template file for 'gnote'
 pkgname=gnote
 version=48.alpha
-revision=1
+revision=0
 build_style=meson
 hostmakedepends="pkg-config gettext itstool
  desktop-file-utils gtk-update-icon-cache"
@@ -15,5 +15,5 @@ license="GPL-3.0-or-later"
 homepage="https://wiki.gnome.org/Apps/Gnote"
 changelog="https://gitlab.gnome.org/GNOME/gnote/-/raw/gnome-46/NEWS"
 distfiles="${GNOME_SITE}/gnote/${version%.*}/gnote-${version}.tar.xz"
-checksum=beb35cade20c60e4315516f20ac7ebee9dfbc2b80f007cbed8bc5a52522e442e
+checksum=743a28c6f07c8390b7aa4f7a031735318a540f8fd7bb602b3639897a7ef11df9
 lib32disabled=yes

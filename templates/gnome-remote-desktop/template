@@ -1,7 +1,7 @@
 # Template file for 'gnome-remote-desktop'
 pkgname=gnome-remote-desktop
-version=47.2
-revision=1
+version=48.rc
+revision=0
 build_style=meson
 configure_args="-Drdp=true -Dvnc=true -Dsystemd=false
  -Dsystemd_user_unit_dir=/usr/lib/systemd/user -Dtests=false"
@@ -13,6 +13,8 @@ short_desc="GNOME remote desktop server"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="GPL-2.0-or-later"
 homepage="https://wiki.gnome.org/Projects/Mutter/RemoteDesktop"
+#changelog="https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/raw/master/NEWS"
+changelog="https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/raw/gnome-47/NEWS"
 distfiles="${GNOME_SITE}/gnome-remote-desktop/${version%%.*}/gnome-remote-desktop-${version}.tar.xz"
-checksum=9351dd8c39ece7050c967cbdcebe1662bc26b8fda924f8a80a9b2a312d07f471
+checksum=47f0d9ec58e57d57377aeb3e9dd87d88b5a655948a0225e354570ff4cca5922a
 make_check=no # xvfb failed to start

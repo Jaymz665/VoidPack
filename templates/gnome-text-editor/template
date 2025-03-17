@@ -1,7 +1,7 @@
 # Template file for 'gnome-text-editor'
 pkgname=gnome-text-editor
-version=48.beta
-revision=1
+version=48.0
+revision=0
 build_style=meson
 hostmakedepends="pkg-config gettext itstool glib-devel
  gtk-update-icon-cache desktop-file-utils"
@@ -14,4 +14,4 @@ homepage="https://gitlab.gnome.org/GNOME/gnome-text-editor"
 #changelog="https://gitlab.gnome.org/GNOME/gnome-text-editor/-/raw/main/NEWS"
 changelog="https://gitlab.gnome.org/GNOME/gnome-text-editor/-/raw/gnome-47/NEWS"
 distfiles="${GNOME_SITE}/gnome-text-editor/${version%.*}/gnome-text-editor-$version.tar.xz"
-checksum=fce933262019a49658e47bd76f59b0e05a40c37570280378308cf8103dc96bf3
+checksum=c39949f6ecca23a26d169ae421523566342547cfaae002191e9b85f13487e797

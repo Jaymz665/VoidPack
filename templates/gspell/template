@@ -1,15 +1,15 @@
 # Template file for 'gspell'
 pkgname=gspell
 version=1.14.0
-revision=1
+revision=0
 build_style=meson
 build_helper="gir"
 configure_args="$(vopt_bool gir gobject_introspection)
  $(vopt_bool vala vapi) $(vopt_bool gtk_doc gtk_doc)"
-hostmakedepends="pkg-config glib-devel $(vopt_if vala vala)
- $(vopt_if gtk_doc gtk-doc)"
+hostmakedepends="pkg-config glib-devel gettext
+ $(vopt_if vala vala) $(vopt_if gtk_doc gtk-doc)"
 makedepends="glib-devel enchant2-devel gtk+3-devel icu-devel"
-checkdepends="xvfb-run cantarell-fonts hunspell-en_US"
+checkdepends="xvfb-run cantarell-fonts hunspell-en"
 short_desc="Flexible API to add spell checking to a GTK+ application"
 maintainer="Enno Boland <gottox@voidlinux.org>"
 license="LGPL-2.1-or-later"

@@ -1,7 +1,7 @@
 # Template file for 'gnome-control-center'
 pkgname=gnome-control-center
-version=48.beta
-revision=1
+version=48.rc.1
+revision=0
 build_style=meson
 build_helper="gir"
 hostmakedepends="glib-devel gsettings-desktop-schemas-devel gettext pkg-config
@@ -22,10 +22,10 @@ short_desc="GNOME control center"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="GPL-2.0-or-later"
 homepage="https://gitlab.gnome.org/GNOME/gnome-control-center"
-changelog="https://gitlab.gnome.org/GNOME/gnome-control-center/-/raw/gnome-46/NEWS"
+changelog="https://gitlab.gnome.org/GNOME/gnome-control-center/-/raw/gnome-47/NEWS"
 #changelog="https://gitlab.gnome.org/GNOME/gnome-control-center/-/raw/main/NEWS"
 distfiles="${GNOME_SITE}/gnome-control-center/${version%%.*}/gnome-control-center-${version}.tar.xz"
-checksum=28c7db74d720fcc9f213c12d372e7eacc1767a49bc4ca66b2bd20b0fd1022668
+checksum=20cae814d92989ca16e4ec268b16f90e9f23aef9dc4c531897ae1da353dac885
 make_check=no # needs X11 and requires altered filesystem
 
 pre_build() {

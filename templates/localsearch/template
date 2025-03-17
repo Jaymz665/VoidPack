@@ -1,7 +1,7 @@
 # Template file for 'localsearch'
 pkgname=localsearch
-version=3.9.beta
-revision=1
+version=3.9.rc
+revision=0
 build_style=meson
 build_helper=qemu
 # missing libgrss for miner_rss
@@ -10,6 +10,7 @@ configure_args="-Dextract=true -Dcue=enabled -Dexif=enabled
  -Dpdf=enabled -Dplaylist=enabled -Dpng=enabled -Draw=enabled
  -Dtiff=enabled -Dxml=enabled -Dxmp=enabled -Dxps=enabled
  -Dminer_rss=false -Dbattery_detection=upower -Dcharset_detection=icu
+ -Dgeneric_media_extractor=gstreamer -Dgstreamer_backend=discoverer
  -Dsystemd_user_services=false -Dnetwork_manager=enabled
  $(vopt_feature landlock)"
 hostmakedepends="pkg-config glib-devel intltool asciidoc"
@@ -19,7 +20,7 @@ makedepends="tinysparql-devel ffmpeg6-devel dbus-devel exempi-devel
  libosinfo-devel libpng-devel libseccomp-devel tiff-devel libxml2-devel
  poppler-glib-devel totem-pl-parser-devel libgirepository-devel
  upower-devel zlib-devel gst-plugins-base1-devel giflib-devel
- NetworkManager-devel libharfbuzz polkit-devel"
+ NetworkManager-devel libharfbuzz"
 checkdepends="python3-gobject localsearch tinysparql dbus gst-plugins-good1 gst-plugins-bad1"
 short_desc="File search framework of the GNOME desktop"
 maintainer="oreo639 <oreo6391@gmail.com>"
@@ -28,7 +29,7 @@ homepage="https://tracker.gnome.org/"
 #changelog="https://gitlab.gnome.org/GNOME/localsearch/-/raw/master/NEWS"
 changelog="https://gitlab.gnome.org/GNOME/localsearch/-/raw/localsearch-3.8/NEWS"
 distfiles="${GNOME_SITE}/localsearch/${version%.*}/localsearch-${version}.tar.xz"
-checksum=dcca7d32fce1c4034ede9d090f0217aa1eee341426d71f530f97b9afe330b090
+checksum=511a84603e514f889c17b3271f9bc3fbd7547b2ae4281144d138f28dd31998cb
 make_check_pre="dbus-run-session"
 make_check=ci-skip # TODO: d-bus tests timeout ci
 

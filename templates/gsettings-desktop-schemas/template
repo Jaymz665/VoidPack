@@ -1,7 +1,7 @@
 # Template file for 'gsettings-desktop-schemas'
 pkgname=gsettings-desktop-schemas
-version=48.beta
-revision=1
+version=48.rc
+revision=0
 build_helper="gir"
 build_style=meson
 configure_args="-Dintrospection=$(vopt_if gir true false)"
@@ -13,7 +13,7 @@ license="LGPL-2.1-or-later"
 homepage="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
 changelog="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas/-/raw/master/NEWS"
 distfiles="${GNOME_SITE}/gsettings-desktop-schemas/${version%.*}/gsettings-desktop-schemas-${version}.tar.xz"
-checksum=a60204d9c9c0a1b264d6d0d134a38340ba5fc6076a34b84da945d8bfcc7a2815
+checksum=2d26b05d997723f67f3be052622923d83acd04ccbbaf01b80668a5a0249aca67
 
 # Package build options
 build_options="gir"

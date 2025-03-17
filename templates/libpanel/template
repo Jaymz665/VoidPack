@@ -1,7 +1,7 @@
 # Template file for 'libpanel'
 pkgname=libpanel
-version=1.9.0
-revision=1
+version=1.10.0
+revision=0
 build_style=meson
 build_helper="gir"
 hostmakedepends="pkg-config gi-docgen gettext glib-devel vala gtk-update-icon-cache"
@@ -12,7 +12,7 @@ license="LGPL-3.0-or-later"
 homepage="https://gitlab.gnome.org/GNOME/libpanel"
 changelog="https://gitlab.gnome.org/GNOME/libpanel/-/raw/main/NEWS"
 distfiles="${GNOME_SITE}/libpanel/${version%.*}/libpanel-${version}.tar.xz"
-checksum=b87b8fa9b79768cc704243793f0158a040a1e46d37b9889188545a7f7dcaa6fb
+checksum=578ce512278ff2bb5eeebb55099392c52537a5abd9bd0629567f102532b38b25
 
 pre_build() {
 	# help gi-docgen find gi files on cross

@@ -2,151 +2,83 @@
 pkgname=mozjs128
 version=128.7.0
 revision=1
+build_wrksrc=js/src
+build_style=gnu-configure
 build_helper=rust
-hostmakedepends="cargo cbindgen clang lld llvm m4 perl pkg-config python3 rust"
-makedepends="icu-devel nspr-devel readline-devel rust-std zlib-devel"
+make_check_target=check-jit-test
+configure_args="--disable-jemalloc --disable-strip --disable-tests \
+ --disable-optimize --disable-debug --enable-ctypes --enable-readline \
+ --enable-shared-js --enable-system-ffi --with-intl-api --with-system-icu \
+ --with-system-nspr --with-system-zlib --enable-hardening --enable-release"
+hostmakedepends="make pkg-config python3 cbindgen perl m4
+ rust cargo llvm19 clang19"
+makedepends="icu-devel libffi-devel nspr-devel python3-devel readline-devel
+ zlib-devel rust-std"
+checkdepends="python3"
 short_desc="SpiderMonkey JavaScript interpreter and library (128.x)"
-maintainer="chrysos349 <chrysostom349@gmail.com>"
+maintainer="oreo639 <oreo6391@gmail.com>"
 license="MPL-2.0"
 homepage="https://spidermonkey.dev"
 distfiles="${MOZILLA_SITE}/firefox/releases/${version}esr/source/firefox-${version}esr.source.tar.xz"
-checksum=e0a7bf4eddfa33cbc8797d68ecea8fb4e6404ca197d3b2242cbc8daed03794f7
+checksum=
 
-do_build() {
-	export CC=clang
-	export CXX=clang++
+LDFLAGS="-Wl,-z,stack-size=1048576"
 
+pre_configure() {
 	if [ "$CROSS_BUILD" ]; then
-		mkdir -p wrapper
-
-		local gcc_version=128.7.0
-		local clang_version=128.7.0
-
-		cat <<-! >"wrapper/${XBPS_TARGET_MACHINE}-clang"
-		#!/bin/sh
-		exec clang \
-			--target="${XBPS_CROSS_TRIPLET}" \
-			--gcc-toolchain=/usr \
-			--sysroot="${XBPS_CROSS_BASE}" \
-			-isystem "${XBPS_CROSS_BASE}/usr/include" \
-			-isystem "/usr/lib/clang/${clang_version}/include" \
-			"\$@"
-		!
-
-		cat <<-! >"wrapper/${XBPS_TARGET_MACHINE}-clang++"
-		#!/bin/sh
-		exec clang++ \
-			--target="${XBPS_CROSS_TRIPLET}" \
-			--gcc-toolchain=/usr \
-			--sysroot="${XBPS_CROSS_BASE}" \
-			-isystem "${XBPS_CROSS_BASE}/usr/include/c++/${gcc_version%.*}" \
-			-isystem "${XBPS_CROSS_BASE}/usr/include/c++/${gcc_version%.*}/${XBPS_CROSS_TRIPLET}" \
-			-isystem "${XBPS_CROSS_BASE}/usr/include/c++/${gcc_version%.*}/backward" \
-			-isystem "${XBPS_CROSS_BASE}/usr/include" \
-			-isystem "/usr/lib/clang/${clang_version}/include" \
-			"\$@"
-		!
-
-		chmod +x wrapper/*
-
-		export PATH="${wrksrc}/wrapper:$PATH"
-		export CC=${XBPS_TARGET_MACHINE}-clang
-		export CXX=${XBPS_TARGET_MACHINE}-clang++
+		configure_args+=" --host=${XBPS_TRIPLET} --target=${XBPS_CROSS_TRIPLET} --enable-linker=bfd"
 	fi
-
-	export AR=llvm-ar
-	export NM=llvm-nm
-	export HOST_CC=clang
-	export HOST_CXX=clang++
-	export AS="${CC}"
-	export CFLAGS="-O2"
-	export CXXFLAGS="-O2"
-	export HOST_CFLAGS=""
-	export HOST_CXXFLAGS=""
-	export LDFLAGS="-Wl,-z,stack-size=1048576"
-
-	cat <<-! >.mozconfig
-	ac_add_options --enable-application=js
-	ac_add_options --prefix=/usr
-	ac_add_options --host=${XBPS_TRIPLET}
-	ac_add_options --target=${XBPS_CROSS_TRIPLET:-${XBPS_TRIPLET}}
-	ac_add_options --disable-bootstrap
-	ac_add_options --disable-debug
-	ac_add_options --disable-debug-symbols
-	ac_add_options --disable-jemalloc
-	ac_add_options --disable-strip
-	ac_add_options --enable-hardening
-	ac_add_options --enable-linker=lld
-	ac_add_options --enable-optimize="$CFLAGS"
-	ac_add_options --enable-release
-	mk_add_options MOZ_OBJDIR='${PWD}'/obj
-
-	ac_add_options --with-system-icu
-	ac_add_options --with-system-nspr
-	ac_add_options --with-system-zlib
-
-	ac_add_options --enable-readline
-	ac_add_options --enable-shared-js
-	ac_add_options --disable-tests
-	ac_add_options --with-intl-api
-	!
-
-	# disable simd for armhf/v7
-	case "$XBPS_TARGET_MACHINE" in
-		arm*) echo 'ac_add_options --disable-rust-simd' >> .mozconfig ;;
-		*) echo 'ac_add_options --enable-rust-simd' >> .mozconfig ;;
-	esac
-
-	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
-	export MOZBUILD_STATE_PATH="${wrksrc}/mozbuild"
-	export MOZ_MAKE_FLAGS="${makejobs}"
-	export MOZ_NOSPAM=1
-	./mach build
+	export M4=m4
+	export AWK=awk
+	export AC_MACRODIR=${wrksrc}/build/autoconf
 }
 
-do_install() {
-	cd obj
-	make DESTDIR=${DESTDIR} install
+post_install() {
+	# Remove unneeded static library
+	rm -f "${DESTDIR}"/usr/lib/*.ajs
 
-	# remove unneeded files
-	rm ${DESTDIR}/usr/lib/*.ajs
-	rm ${DESTDIR}/usr/bin/js${version%%.*}-config
-
-	# rename library, create symlinks
+	# it has correct soname but not the right file name
 	mv "${DESTDIR}"/usr/lib/libmozjs-${version%%.*}.so \
 	   "${DESTDIR}"/usr/lib/libmozjs-${version%%.*}.so.0
 	ln -rs "${DESTDIR}"/usr/lib/libmozjs-${version%%.*}.so.0 \
 	       "${DESTDIR}"/usr/lib/libmozjs-${version%%.*}.so
 }
 
-do_check() {
-	cat <<-! > known_failures.txt
-	non262/Intl/available-locales-supported.js
-	non262/Intl/available-locales-resolved.js
-	non262/Intl/supportedValuesOf-timeZones-canonical.js
-	non262/Intl/Collator/big5han-gb2312han.js
-	non262/Intl/Collator/implicithan.js
-	non262/Intl/DateTimeFormat/fractional-second-digits-append-item.js
-	non262/Intl/DateTimeFormat/day-period-hour-cycle.js
-	non262/Intl/DateTimeFormat/timeZone_backzone.js
-	!
-
-	export JSTESTS_EXTRA_ARGS="--format=none --exclude-random \
-		--wpt=disabled --exclude-file='${PWD}'/known_failures.txt"
-	export JITTEST_EXTRA_ARGS="--format=none --timeout 600"
-	export JITTEST_TEST_ARGS="basic"
-
-	cd obj
-	make -C js/src check-jstests check-jit-test
+pre_check() {
+	export JITTEST_EXTRA_ARGS="--timeout 600"
+	if [ "$XBPS_WORDSIZE" = 32 ]; then
+		vsed -i jit-test/tests/basic/bug653153.js -e s/65536/65568/g
+		vsed -i jit-test/tests/basic/bug653153.js -e s/65537/65569/g
+		vsed -i jit-test/tests/bug1782468-ptrdiff-veclen.js -e 's/getBuildConfiguration("pointer-byte-size") == 4/false/g'
+	fi
+	if [ "$XBPS_TARGET_MACHINE" = i686 ]; then
+		export JITTEST_EXTRA_ARGS="${JITTEST_EXTRA_ARGS} \
+			-x basic/fdlibm-for-sin-cos-tan-argument.js \
+			-x gc/gcparam.js \
+			-x ion/dce-with-rinstructions.js \
+			-x sunspider/check-3d-cube.js \
+			-x sunspider/check-3d-raytrace.js \
+			-x sunspider/check-access-nbody.js \
+			-x wasm \
+			-x resist-fingerprinting/math-fdlibm-sincostan-asm.js \
+			-x resist-fingerprinting/math-fdlibm-sincostan.js \
+			"
+	fi
+	if [ "$XBPS_LIBC" = musl ]; then
+		export JITTEST_EXTRA_ARGS="${JITTEST_EXTRA_ARGS} \
+			-x sunspider/check-date-format-tofte.js \
+			-x resist-fingerprinting/math-fdlibm-sincostan.js \
+			"
+	fi
 }
 
 mozjs128-devel_package() {
 	depends="nspr-devel ${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {
-		vmove "usr/lib/*.so"
 		vmove usr/bin
 		vmove usr/include
+		vmove "usr/lib/*.so"
 		vmove usr/lib/pkgconfig
 	}
 }

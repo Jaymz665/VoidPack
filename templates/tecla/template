@@ -1,7 +1,7 @@
 # Template file for 'tecla'
 pkgname=tecla
-version=48.alpha
-revision=1
+version=48.rc
+revision=0
 build_style=meson
 hostmakedepends="pkg-config gettext glib-devel"
 makedepends="gtk4-devel libadwaita-devel"
@@ -11,4 +11,4 @@ license="GPL-3.0-or-later"
 homepage="https://gitlab.gnome.org/GNOME/tecla"
 changelog="https://gitlab.gnome.org/GNOME/tecla/-/raw/main/NEWS"
 distfiles="${GNOME_SITE}/tecla/${version%.*}/tecla-${version}.tar.xz"
-checksum=0790b99ec29137a54b546c510661a99aa6f039c8d75f10c08e928682c0804fe5
+checksum=63fb075a67c6433bff0f925f8266c6bdf94b5606988e9108f519dfd8dca428df

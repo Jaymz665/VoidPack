@@ -1,0 +1,25 @@
+# Template file for 'pangomm2.48'
+pkgname=pangomm2.48
+version=2.56.1
+revision=0
+build_style=meson
+hostmakedepends="pkg-config"
+makedepends="libsigc++3-devel glibmm2.68-devel cairomm1.16-devel pango-devel"
+short_desc="C++ bindings for the pango library"
+maintainer="Enno Boland <gottox@voidlinux.org>"
+license="LGPL-2.1-or-later"
+homepage="https://gtkmm.org"
+changelog="https://gitlab.gnome.org/GNOME/pangomm/-/raw/master/NEWS"
+distfiles="${GNOME_SITE}/pangomm/${version%.*}/pangomm-${version}.tar.xz"
+checksum=539f5aa60e9bdc6b955bb448e2a62cc14562744df690258040fbb74bf885755d
+
+pangomm2.48-devel_package() {
+	depends="${makedepends} ${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/pango*"
+		vmove "usr/lib/*.so"
+	}
+}

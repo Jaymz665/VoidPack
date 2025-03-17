@@ -1,7 +1,7 @@
 # Template file for 'gnome-contacts'
 pkgname=gnome-contacts
-version=47.0
-revision=1
+version=48.0
+revision=0
 build_style=meson
 hostmakedepends="docbook-xsl folks-devel gettext glib-devel libxslt pkg-config vala"
 makedepends="cheese-devel folks-devel gnome-desktop-devel libportal-gtk4-devel
@@ -11,5 +11,5 @@ short_desc="GNOME contacts manager"
 maintainer="Enno Boland <gottox@voidlinux.org>"
 license="GPL-2.0-or-later"
 homepage="https://wiki.gnome.org/Apps/Contacts"
-distfiles="${GNOME_SITE}/gnome-contacts/${version%.*}/gnome-contacts-${version}.tar.xz"
-checksum=25e3c6f79728188afa5f0cd5d0be85dc467d12db6a2d98b54af3df0dcb4290d0
+distfiles="${GNOME_SITE}/gnome-contacts/${version%%.*}/gnome-contacts-${version}.tar.xz"
+checksum=a2762995b59427ec3f185f28b5594e37077b72a70cd7c19217ed634637ecc1b5
